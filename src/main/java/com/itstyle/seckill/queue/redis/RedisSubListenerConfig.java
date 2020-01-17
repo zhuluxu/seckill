@@ -33,6 +33,7 @@ public class RedisSubListenerConfig {
                 new LinkedBlockingQueue<>(1000),
                 factory);
         container.setTaskExecutor(executor);
+        container.setSubscriptionExecutor(Executors.newFixedThreadPool(1));
         return container;
     }
     //利用反射来创建监听到消息之后的执行方法
