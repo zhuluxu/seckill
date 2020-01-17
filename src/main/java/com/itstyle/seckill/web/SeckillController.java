@@ -68,7 +68,7 @@ public class SeckillController {
                         LOGGER.info("用户:{}{}",userId,"哎呦喂，人也太多了，请稍后！");
                     }
                 }catch (RrException e){
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
 				latch.countDown();
 			};
