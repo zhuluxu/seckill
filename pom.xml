@@ -138,24 +138,34 @@
 	     </dependency>
   </dependencies>
   <build>
-        <finalName>spring-boot-seckill</finalName><plugins>
+        <finalName>spring-boot-seckill</finalName>
 	    <!-- 打包项目 mvn clean package -->
-		<plugin>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-maven-plugin</artifactId>
-		     <dependencies>
-			   <!--  mvn spring-boot:run 热部署启动 -->
-                   <dependency>
-                       <groupId>org.springframework</groupId>
-                       <artifactId>springloaded</artifactId>
-                       <version>1.2.7.RELEASE</version>
-                   </dependency>
-               </dependencies>
-		</plugin>
-        <plugin>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                 <dependencies>
+                   <!--  mvn spring-boot:run 热部署启动 -->
+                       <dependency>
+                           <groupId>org.springframework</groupId>
+                           <artifactId>springloaded</artifactId>
+                           <version>1.2.7.RELEASE</version>
+                       </dependency>
+                   </dependencies>
+            </plugin>
+            <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
               <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-               </plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.7.0</version>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+              </configuration>
+           </plugin>
 	  </plugins>
   </build>
 </project>

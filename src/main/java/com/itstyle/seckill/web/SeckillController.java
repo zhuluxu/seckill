@@ -1,5 +1,6 @@
 package com.itstyle.seckill.web;
 
+import com.itstyle.seckill.common.exception.RrException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -56,12 +57,19 @@ public class SeckillController {
 		for(int i=0;i<skillNum;i++){
 			final long userId = i;
 			Runnable task = () -> {
-				Result result = seckillService.startSeckil(killId, userId);
-				if(result!=null){
-					LOGGER.info("用户:{}{}",userId,result.get("msg"));
-				}else{
-					LOGGER.info("用户:{}{}",userId,"哎呦喂，人也太多了，请稍后！");
-				}
+                /**
+                 * 坏蛋说 抛异常影响最终效果
+                 */
+				try{
+                    Result result = seckillService.startSeckil(killId, userId);
+                    if(result!=null){
+                        LOGGER.info("用户:{}{}",userId,result.get("msg"));
+                    }else{
+                        LOGGER.info("用户:{}{}",userId,"哎呦喂，人也太多了，请稍后！");
+                    }
+                }catch (RrException e){
+                    e.printStackTrace();
+                }
 				latch.countDown();
 			};
 			executor.execute(task);
