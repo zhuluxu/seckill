@@ -127,4 +127,31 @@ public class RedisUtil {
         }
         return false;
     }
+    /**
+     * 递增
+     * @param k
+     * @param delta 要增加几(大于0)
+     * @return
+     */
+    public long incr(String k, long delta) {
+        String key = KEY_PREFIX_VALUE + k;
+        if (delta < 0) {
+            throw new RuntimeException("递增因子必须大于0");
+        }
+        return redisTemplate.opsForValue().increment(key, delta);
+    }
+
+    /**
+     * 递减
+     * @param k 键
+     * @param delta 要减少几(小于0)
+     * @return
+     */
+    public long decr(String k, long delta) {
+        String key = KEY_PREFIX_VALUE + k;
+        if (delta < 0) {
+            throw new RuntimeException("递减因子必须大于0");
+        }
+        return redisTemplate.opsForValue().increment(key, -delta);
+    }
 }

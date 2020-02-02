@@ -8,13 +8,13 @@ import java.util.List;
  */
 public interface DynamicQuery {
 
-	public void save(Object entity);
+	 void save(Object entity);
 
-	public void update(Object entity);
+	 void update(Object entity);
 
-	public <T> void delete(Class<T> entityClass, Object entityid);
+	 <T> void delete(Class<T> entityClass, Object entityid);
 
-	public <T> void delete(Class<T> entityClass, Object[] entityids);
+	 <T> void delete(Class<T> entityClass, Object[] entityids);
 	
 	
 	 /**

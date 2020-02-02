@@ -2,6 +2,7 @@ package com.itstyle.seckill.distributedlock.redis;
 import java.util.concurrent.TimeUnit;
 
 import org.redisson.api.RLock;
+import org.redisson.api.RMapCache;
 import org.redisson.api.RedissonClient;
 
 /**
@@ -97,5 +98,42 @@ public class RedissLockUtil {
 		} catch (InterruptedException e) {
 			return false;
 		}
+    }
+
+    /**
+     * 初始红包数量
+     * @param key
+     * @param count
+     */
+    public void initCount(String key,int count) {
+        RMapCache<String, Integer> mapCache = redissonClient.getMapCache("skill");
+        mapCache.putIfAbsent(key,count,3,TimeUnit.DAYS);
+    }
+    /**
+     * 递增
+     * @param key
+     * @param delta 要增加几(大于0)
+     * @return
+     */
+    public int incr(String key, int delta) {
+        RMapCache<String, Integer> mapCache = redissonClient.getMapCache("skill");
+        if (delta < 0) {
+            throw new RuntimeException("递增因子必须大于0");
+        }
+        return  mapCache.addAndGet(key, 1);//加1并获取计算后的值
+    }
+
+    /**
+     * 递减
+     * @param key 键
+     * @param delta 要减少几(小于0)
+     * @return
+     */
+    public int decr(String key, int delta) {
+        RMapCache<String, Integer> mapCache = redissonClient.getMapCache("skill");
+        if (delta < 0) {
+            throw new RuntimeException("递减因子必须大于0");
+        }
+        return mapCache.addAndGet(key, -delta);//加1并获取计算后的值
     }
 }

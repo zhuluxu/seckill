@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
+
 /**
  * 启动类
  * 创建者 科帮网
@@ -11,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * API接口测试：http://localhost:8080/seckill/swagger-ui.html
  * 跑之前 一定要看文库：https://gitee.com/52itstyle/spring-boot-seckill/wikis
  */
+@EnableAsync
 @SpringBootApplication
 public class Application {
 	private final static Logger LOGGER = LoggerFactory.getLogger(Application.class);

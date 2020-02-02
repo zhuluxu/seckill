@@ -1,23 +1,91 @@
 package com.itstyle.seckill.web;
 
 
+import com.itstyle.seckill.common.entity.Result;
+import com.itstyle.seckill.common.redis.RedisUtil;
+import com.itstyle.seckill.common.utils.DoubleUtil;
+import com.itstyle.seckill.service.IRedPacketService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.itstyle.seckill.common.entity.Result;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * 高并发抢红包案例
+ * https://blog.52itstyle.vip
+ */
 @Api(tags ="抢红包")
 @RestController
 @RequestMapping("/redPacket")
 public class RedPacketController {
-	
-	
-	@ApiOperation(value="抢红包一(最low实现)",nickname="科帮网")
+
+	private final static Logger LOGGER = LoggerFactory.getLogger(RedPacketController.class);
+
+	private static int corePoolSize = Runtime.getRuntime().availableProcessors();
+	//创建线程池  调整队列数 拒绝服务
+	private static ThreadPoolExecutor executor  = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l, TimeUnit.SECONDS,
+			new LinkedBlockingQueue<>(1000));
+
+	@Autowired
+	private RedisUtil redisUtil;
+
+	@Autowired
+	private IRedPacketService redPacketService;
+
+	@ApiOperation(value="抢红包一",nickname="爪哇笔记")
 	@PostMapping("/start")
-	public static Result start(long seckillId){
+	public Result start(long redPacketId){
+		int skillNum = 100;
+		final CountDownLatch latch = new CountDownLatch(skillNum);//N个抢红包
+		/**
+		 * 初始化红包数据，抢红包拦截
+		 */
+		redisUtil.cacheValue(redPacketId+"-num",10);
+        /**
+         * 初始化剩余人数，拆红包拦截
+         */
+        redisUtil.cacheValue(redPacketId+"-restPeople",10);
+        /**
+         * 初始化红包金额，单位为分
+         */
+		redisUtil.cacheValue(redPacketId+"-money",20000);
+        /**
+         * 模拟100个用户抢10个红包
+         */
+		for(int i=1;i<=skillNum;i++){
+			int userId = i;
+			Runnable task = () -> {
+                /**
+                 * 抢红包拦截，其实应该分两步，为了演示方便
+                 */
+				long count = redisUtil.decr(redPacketId+"-num",1);
+				if(count>0){
+					Result result = redPacketService.startSeckil(redPacketId,userId);
+                    Double amount = DoubleUtil.divide(Double.parseDouble(result.get("msg").toString()), (double) 100);
+					LOGGER.info("用户{}抢红包成功，金额：{}", userId,amount);
+				}else{
+                    LOGGER.info("用户{}抢红包失败",userId);
+                }
+				latch.countDown();
+			};
+			executor.execute(task);
+		}
+		try {
+			latch.await();
+            Integer restMoney = Integer.parseInt(redisUtil.getValue(redPacketId+"-money").toString());
+            LOGGER.info("剩余金额：{}",restMoney);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return Result.ok();
 	}
 }
