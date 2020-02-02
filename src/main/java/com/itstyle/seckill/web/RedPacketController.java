@@ -41,6 +41,11 @@ public class RedPacketController {
 	@Autowired
 	private IRedPacketService redPacketService;
 
+    /**
+     * 抢红包 拆红包 抢到基本能拆到
+     * @param redPacketId
+     * @return
+     */
 	@ApiOperation(value="抢红包一",nickname="爪哇笔记")
 	@PostMapping("/start")
 	public Result start(long redPacketId){
@@ -70,7 +75,7 @@ public class RedPacketController {
 				long count = redisUtil.decr(redPacketId+"-num",1);
 				if(count>0){
 					Result result = redPacketService.startSeckil(redPacketId,userId);
-                    Double amount = DoubleUtil.divide(Double.parseDouble(result.get("msg").toString()), (double) 100);
+					Double amount = DoubleUtil.divide(Double.parseDouble(result.get("msg").toString()), (double) 100);
 					LOGGER.info("用户{}抢红包成功，金额：{}", userId,amount);
 				}else{
                     LOGGER.info("用户{}抢红包失败",userId);
@@ -88,4 +93,64 @@ public class RedPacketController {
 		}
 		return Result.ok();
 	}
+
+    /**
+     * 抢红包 拆红包 抢到不一定能拆到
+     * @param redPacketId
+     * @return
+     */
+    @ApiOperation(value="抢红包二",nickname="爪哇笔记")
+    @PostMapping("/startTwo")
+    public Result startTwo(long redPacketId){
+        int skillNum = 100;
+        final CountDownLatch latch = new CountDownLatch(skillNum);//N个抢红包
+        /**
+         * 初始化红包数据，抢红包拦截
+         */
+        redisUtil.cacheValue(redPacketId+"-num",10);
+        /**
+         * 初始化红包金额，单位为分
+         */
+        redisUtil.cacheValue(redPacketId+"-money",20000);
+        /**
+         * 模拟100个用户抢10个红包
+         */
+        for(int i=1;i<=skillNum;i++){
+            int userId = i;
+            Runnable task = () -> {
+                /**
+                 * 抢红包 判断剩余金额
+                 */
+                Integer money = (Integer) redisUtil.getValue(redPacketId+"-money");
+                if(money>0){
+                    /**
+                     * 虽然能抢到 但是不一定能拆到
+                     * 类似于微信的 点击红包显示抢的按钮
+                     */
+                    Result result = redPacketService.startTwoSeckil(redPacketId,userId);
+                    if(result.get("code").toString().equals("500")){
+                        LOGGER.info("用户{}手慢了，红包派完了",userId);
+                    }else{
+                        Double amount = DoubleUtil.divide(Double.parseDouble(result.get("msg").toString()), (double) 100);
+                        LOGGER.info("用户{}抢红包成功，金额：{}", userId,amount);
+                    }
+                }else{
+                    /**
+                     * 直接显示手慢了，红包派完了
+                     */
+                    //LOGGER.info("用户{}手慢了，红包派完了",userId);
+                }
+                latch.countDown();
+            };
+            executor.execute(task);
+        }
+        try {
+            latch.await();
+            Integer restMoney = Integer.parseInt(redisUtil.getValue(redPacketId+"-money").toString());
+            LOGGER.info("剩余金额：{}",restMoney);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return Result.ok();
+    }
 }
