@@ -117,9 +117,9 @@ public class RedPacketService implements IRedPacketService {
                 }
             }else{
                 /**
-                 * 获取锁失败相当于抢红包失败，红包个数加一
+                 * 获取锁失败相当于抢红包失败
                  */
-                redisUtil.incr(redPacketId+"-num",1);
+                return Result.error("手慢了，红包派完了");
             }
         } catch (Exception e) {
             e.printStackTrace();
