@@ -6,14 +6,14 @@ public interface IRedPacketService {
 
 
 	/**
-	 * 秒杀一
+	 * 抢红包业务实现
 	 * @param redPacketId
 	 * @return
 	 */
 	Result startSeckil(long redPacketId,int userId);
 
     /**
-     * 秒杀二
+     * 微信抢红包业务实现
      * @param redPacketId
      * @param userId
      * @return
