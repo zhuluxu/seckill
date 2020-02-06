@@ -82,7 +82,7 @@ public class RedPacketService implements IRedPacketService {
         boolean res=false;
         try {
             /**
-             * 获取锁 保证红包数量和计算红白金额的原子性操作
+             * 获取锁 保证红包数量和计算红包金额的原子性操作
              */
             res = RedissLockUtil.tryLock(redPacketId+"", TimeUnit.SECONDS, 3, 10);
             if(res){
