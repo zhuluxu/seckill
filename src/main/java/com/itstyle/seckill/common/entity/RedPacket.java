@@ -21,6 +21,7 @@ public class RedPacket implements Serializable {
     private int totalAmount;//红包总金额，单位分
     private int totalPacket;//红包总个数
     private int type;//类型
+    private int uid;//创建用户
     private Timestamp createTime;//创建时间
     @Version
     private int version;
@@ -71,5 +72,13 @@ public class RedPacket implements Serializable {
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 }

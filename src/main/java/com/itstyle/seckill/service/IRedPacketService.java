@@ -1,10 +1,16 @@
 package com.itstyle.seckill.service;
 
+import com.itstyle.seckill.common.entity.RedPacket;
 import com.itstyle.seckill.common.entity.Result;
 
 public interface IRedPacketService {
 
-
+    /**
+     * 获取红包
+     * @param redPacketId
+     * @return
+     */
+    RedPacket get(long redPacketId);
 	/**
 	 * 抢红包业务实现
 	 * @param redPacketId

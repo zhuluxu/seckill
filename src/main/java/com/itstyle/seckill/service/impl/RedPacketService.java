@@ -1,6 +1,7 @@
 package com.itstyle.seckill.service.impl;
 
 import com.itstyle.seckill.common.dynamicquery.DynamicQuery;
+import com.itstyle.seckill.common.entity.RedPacket;
 import com.itstyle.seckill.common.entity.RedPacketRecord;
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.common.redis.RedisUtil;
@@ -22,6 +23,11 @@ public class RedPacketService implements IRedPacketService {
     private RedisUtil redisUtil;
     @Autowired
     private DynamicQuery dynamicQuery;
+
+    @Override
+    public RedPacket get(long redPacketId) {
+        return null;
+    }
 
     @Override
     @Transactional
@@ -87,11 +93,13 @@ public class RedPacketService implements IRedPacketService {
             res = RedissLockUtil.tryLock(redPacketId+"", TimeUnit.SECONDS, 3, 10);
             if(res){
                 long restPeople = redisUtil.decr(redPacketId+"-num",1);
-                if(restPeople>0){
+                if(restPeople<0){
+                    return Result.error("手慢了，红包派完了");
+                }else{
                     /**
                      * 如果是最后一人
                      */
-                    if(restPeople==1){
+                    if(restPeople==0){
                         money = Integer.parseInt(redisUtil.getValue(redPacketId+"-money").toString());
                     }else{
                         Integer restMoney = Integer.parseInt(redisUtil.getValue(redPacketId+"-money").toString());
@@ -112,8 +120,6 @@ public class RedPacketService implements IRedPacketService {
                     /**
                      * 异步入账
                      */
-                }else{
-                    return Result.error("手慢了，红包派完了");
                 }
             }else{
                 /**

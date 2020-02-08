@@ -1,9 +1,11 @@
 package com.itstyle.seckill.web;
 
 
+import com.itstyle.seckill.common.entity.RedPacketMessage;
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.common.redis.RedisUtil;
 import com.itstyle.seckill.common.utils.DoubleUtil;
+import com.itstyle.seckill.queue.delay.jvm.RedPacketQueue;
 import com.itstyle.seckill.service.IRedPacketService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -114,6 +116,70 @@ public class RedPacketController {
         redisUtil.cacheValue(redPacketId+"-money",20000);
         /**
          * 模拟100个用户抢10个红包
+         */
+        for(int i=1;i<=skillNum;i++){
+            int userId = i;
+            Runnable task = () -> {
+                /**
+                 * 抢红包 判断剩余金额
+                 */
+                Integer money = (Integer) redisUtil.getValue(redPacketId+"-money");
+                if(money>0){
+                    /**
+                     * 虽然能抢到 但是不一定能拆到
+                     * 类似于微信的 点击红包显示抢的按钮
+                     */
+                    Result result = redPacketService.startTwoSeckil(redPacketId,userId);
+                    if(result.get("code").toString().equals("500")){
+                        LOGGER.info("用户{}手慢了，红包派完了",userId);
+                    }else{
+                        Double amount = DoubleUtil.divide(Double.parseDouble(result.get("msg").toString()), (double) 100);
+                        LOGGER.info("用户{}抢红包成功，金额：{}", userId,amount);
+                    }
+                }else{
+                    /**
+                     * 直接显示手慢了，红包派完了
+                     */
+                    //LOGGER.info("用户{}手慢了，红包派完了",userId);
+                }
+                latch.countDown();
+            };
+            executor.execute(task);
+        }
+        try {
+            latch.await();
+            Integer restMoney = Integer.parseInt(redisUtil.getValue(redPacketId+"-money").toString());
+            LOGGER.info("剩余金额：{}",restMoney);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return Result.ok();
+    }
+    /**
+     * 有人没抢 红包发多了
+     * @param redPacketId
+     * @return
+     */
+    @ApiOperation(value="抢红包三",nickname="爪哇笔记")
+    @PostMapping("/startThree")
+    public Result startThree(long redPacketId){
+        int skillNum = 9;
+        final CountDownLatch latch = new CountDownLatch(skillNum);//N个抢红包
+        /**
+         * 初始化红包数据，抢红包拦截
+         */
+        redisUtil.cacheValue(redPacketId+"-num",10);
+        /**
+         * 初始化红包金额，单位为分
+         */
+        redisUtil.cacheValue(redPacketId+"-money",20000);
+        /**
+         * 加入延迟队列 24s秒过期
+         */
+        RedPacketMessage message = new RedPacketMessage(redPacketId,24);
+        RedPacketQueue.getQueue().produce(message);
+        /**
+         * 模拟 9个用户抢10个红包
          */
         for(int i=1;i<=skillNum;i++){
             int userId = i;
