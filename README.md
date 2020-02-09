@@ -329,6 +329,7 @@ SpringBoot开发案例从0到1构建分布式秒杀系统，项目案例基本�
 
 ## 可供参考
 
+[微信高并发抢红包秒杀实战案例](https://blog.52itstyle.vip/archives/5103/ "微信高并发抢红包秒杀实战案例")
 
 [三分钟深入TT猫之故障转移](https://www.cnblogs.com/smallSevens/p/7535139.html "三分钟深入TT猫之故障转移")
 
@@ -338,44 +339,44 @@ SpringBoot开发案例从0到1构建分布式秒杀系统，项目案例基本�
 
 [淘宝大秒系统设计详解](https://blog.csdn.net/heyc861221/article/details/80122167 "淘宝大秒系统设计详解")
 
-[SpringBoot开发案例从0到1构建分布式秒杀系统](https://blog.52itstyle.com/archives/2853/ "SpringBoot开发案例从0到1构建分布式秒杀系统")
+[SpringBoot开发案例从0到1构建分布式秒杀系统](https://blog.52itstyle.vip/archives/2853/ "SpringBoot开发案例从0到1构建分布式秒杀系统")
 
-[SpringBoot开发案例之整合Kafka实现消息队列](https://blog.52itstyle.com/archives/2868/ "SpringBoot开发案例之整合Kafka实现消息队列")
+[SpringBoot开发案例之整合Kafka实现消息队列](https://blog.52itstyle.vip/archives/2868/ "SpringBoot开发案例之整合Kafka实现消息队列")
 
 [Docker学习之搭建ActiveMQ消息服务](https://blog.52itstyle.com/archives/3362/ "Docker学习之搭建ActiveMQ消息服务")
 
-[从构建分布式秒杀系统聊聊Threadpool线程池](https://blog.52itstyle.com/archives/2894/ "从构建分布式秒杀系统聊聊Threadpool线程池")
+[从构建分布式秒杀系统聊聊Threadpool线程池](https://blog.52itstyle.vip/archives/2894/ "从构建分布式秒杀系统聊聊Threadpool线程池")
 
-[从构建分布式秒杀系统聊聊Disruptor高性能队列](https://blog.52itstyle.com/archives/2911/ "从构建分布式秒杀系统聊聊Disruptor高性能队列")
+[从构建分布式秒杀系统聊聊Disruptor高性能队列](https://blog.52itstyle.vip/archives/2911/ "从构建分布式秒杀系统聊聊Disruptor高性能队列")
 
-[从构建分布式秒杀系统聊聊商品详情页静态化](https://blog.52itstyle.com/archives/2934/ "从构建分布式秒杀系统聊聊商品详情页静态化")
+[从构建分布式秒杀系统聊聊商品详情页静态化](https://blog.52itstyle.vip/archives/2934/ "从构建分布式秒杀系统聊聊商品详情页静态化")
 
-[构建分布式秒杀系统聊聊Lock锁使用中的坑](https://blog.52itstyle.com/archives/2952/ "构建分布式秒杀系统聊聊Lock锁使用中的坑")
+[构建分布式秒杀系统聊聊Lock锁使用中的坑](https://blog.52itstyle.vip/archives/2952/ "构建分布式秒杀系统聊聊Lock锁使用中的坑")
 
-[从构建分布式秒杀系统聊聊限流特技](https://blog.52itstyle.com/archives/2982/ "从构建分布式秒杀系统聊聊限流特技")
+[从构建分布式秒杀系统聊聊限流特技](https://blog.52itstyle.vip/archives/2982/ "从构建分布式秒杀系统聊聊限流特技")
 
-[从构建分布式秒杀系统聊聊WebSocket推送通知](https://blog.52itstyle.com/archives/2977/ "从构建分布式秒杀系统聊聊WebSocket推送通知")
+[从构建分布式秒杀系统聊聊WebSocket推送通知](https://blog.52itstyle.vip/archives/2977/ "从构建分布式秒杀系统聊聊WebSocket推送通知")
 
-[从构建分布式秒杀系统聊聊分布式锁](https://blog.52itstyle.com/archives/3202/ "从构建分布式秒杀系统聊聊分布式锁")
+[从构建分布式秒杀系统聊聊分布式锁](https://blog.52itstyle.vip/archives/3202/ "从构建分布式秒杀系统聊聊分布式锁")
 
-[从构建分布式秒杀系统聊聊重复下单](https://blog.52itstyle.com/archives/3391/ "从构建分布式秒杀系统聊聊重复下单")
+[从构建分布式秒杀系统聊聊重复下单](https://blog.52itstyle.vip/archives/3391/ "从构建分布式秒杀系统聊聊重复下单")
 
-[从构建分布式秒杀系统聊聊验证码](https://blog.52itstyle.com/archives/3367/ "从构建分布式秒杀系统聊聊验证码")
+[从构建分布式秒杀系统聊聊验证码](https://blog.52itstyle.vip/archives/3367/ "从构建分布式秒杀系统聊聊验证码")
 
 
-[Nginx学习之负载均衡](https://blog.52itstyle.com/archives/623/ "Nginx学习之负载均衡")
+[Nginx学习之负载均衡](https://blog.52itstyle.vip/archives/623/ "Nginx学习之负载均衡")
 
-[Nginx学习之如何防止流量攻击](https://blog.52itstyle.com/archives/775/ "Nginx学习之如何防止流量攻击")
+[Nginx学习之如何防止流量攻击](https://blog.52itstyle.vip/archives/775/ "Nginx学习之如何防止流量攻击")
 
-[Nginx学习之缓存配置](https://blog.52itstyle.com/archives/826/ "Nginx学习之缓存配置")
+[Nginx学习之缓存配置](https://blog.52itstyle.vip/archives/826/ "Nginx学习之缓存配置")
 
-[Nginx学习之HTTP/2.0配置](https://blog.52itstyle.com/archives/1524/ "Nginx学习之HTTP/2.0配置")
+[Nginx学习之HTTP/2.0配置](https://blog.52itstyle.vip/archives/1524/ "Nginx学习之HTTP/2.0配置")
 
-[企业云解析DNS](https://blog.52itstyle.com/archives/515/ "企业云解析DNS")
+[企业云解析DNS](https://blog.52itstyle.vip/archives/515/ "企业云解析DNS")
 
-[Linux下搭建ZooKeeper集群](https://blog.52itstyle.com/archives/363/ "Linux下搭建ZooKeeper集群")
+[Linux下搭建ZooKeeper集群](https://blog.52itstyle.vip/archives/363/ "Linux下搭建ZooKeeper集群")
 
-[linux下redis设置密码登录](http://www.52itstyle.com/thread-20085-1-1.html "linux下redis设置密码登录")
+[linux下redis设置密码登录](http://www.52itstyle.top/thread-20085-1-1.html "linux下redis设置密码登录")
 
 ## 欢迎关注
 
