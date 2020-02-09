@@ -191,10 +191,6 @@ public class RedPacketController {
                  */
                 Integer money = (Integer) redisUtil.getValue(redPacketId+"-money");
                 if(money>0){
-                    /**
-                     * 虽然能抢到 但是不一定能拆到
-                     * 类似于微信的 点击红包显示抢的按钮
-                     */
                     Result result = redPacketService.startTwoSeckil(redPacketId,userId);
                     if(result.get("code").toString().equals("500")){
                         LOGGER.info("用户{}手慢了，红包派完了",userId);
