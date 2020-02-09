@@ -157,6 +157,8 @@ public class RedPacketController {
     }
     /**
      * 有人没抢 红包发多了
+     * 红包进入延迟队列
+     * 实现过期失效
      * @param redPacketId
      * @return
      */
@@ -200,11 +202,6 @@ public class RedPacketController {
                         Double amount = DoubleUtil.divide(Double.parseDouble(result.get("msg").toString()), (double) 100);
                         LOGGER.info("用户{}抢红包成功，金额：{}", userId,amount);
                     }
-                }else{
-                    /**
-                     * 直接显示手慢了，红包派完了
-                     */
-                    //LOGGER.info("用户{}手慢了，红包派完了",userId);
                 }
                 latch.countDown();
             };
