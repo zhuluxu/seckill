@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.entity;
+package com.itstyle.seckill.queue.delay.jvm;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

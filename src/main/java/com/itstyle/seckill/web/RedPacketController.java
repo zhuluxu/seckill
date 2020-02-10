@@ -1,10 +1,10 @@
 package com.itstyle.seckill.web;
 
 
-import com.itstyle.seckill.common.entity.RedPacketMessage;
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.common.redis.RedisUtil;
 import com.itstyle.seckill.common.utils.DoubleUtil;
+import com.itstyle.seckill.queue.delay.jvm.RedPacketMessage;
 import com.itstyle.seckill.queue.delay.jvm.RedPacketQueue;
 import com.itstyle.seckill.service.IRedPacketService;
 import io.swagger.annotations.Api;

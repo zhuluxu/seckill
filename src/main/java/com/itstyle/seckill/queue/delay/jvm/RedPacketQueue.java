@@ -1,7 +1,5 @@
 package com.itstyle.seckill.queue.delay.jvm;
 
-import com.itstyle.seckill.common.entity.RedPacketMessage;
-
 import java.util.concurrent.DelayQueue;
 
 /**

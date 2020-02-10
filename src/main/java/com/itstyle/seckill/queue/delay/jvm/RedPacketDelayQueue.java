@@ -1,14 +1,11 @@
-package com.itstyle.seckill.queue.delay;
+package com.itstyle.seckill.queue.delay.jvm;
 
-import com.itstyle.seckill.common.entity.RedPacketMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.*;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 红包过期失效 延迟队列

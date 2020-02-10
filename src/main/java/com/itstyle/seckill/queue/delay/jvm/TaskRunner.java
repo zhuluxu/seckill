@@ -1,6 +1,5 @@
 package com.itstyle.seckill.queue.delay.jvm;
 
-import com.itstyle.seckill.common.entity.RedPacketMessage;
 import com.itstyle.seckill.common.redis.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
