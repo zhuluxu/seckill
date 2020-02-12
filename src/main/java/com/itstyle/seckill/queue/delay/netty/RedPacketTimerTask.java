@@ -8,6 +8,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * 红包过期队列信息
+ */
 public class RedPacketTimerTask implements TimerTask {
 
     private static final DateTimeFormatter F = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
