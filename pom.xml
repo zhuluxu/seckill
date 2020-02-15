@@ -147,6 +147,12 @@
           <artifactId>netty-common</artifactId>
           <version>4.1.23.Final</version>
       </dependency>
+      <!--beanstalkd消息队列-->
+      <dependency>
+          <groupId>com.dinstone</groupId>
+          <artifactId>beanstalkc</artifactId>
+          <version>2.3.0</version>
+      </dependency>
   </dependencies>
   <build>
         <finalName>spring-boot-seckill</finalName>
