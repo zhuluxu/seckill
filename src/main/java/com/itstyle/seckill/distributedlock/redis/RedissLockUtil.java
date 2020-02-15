@@ -1,9 +1,10 @@
 package com.itstyle.seckill.distributedlock.redis;
-import java.util.concurrent.TimeUnit;
 
 import org.redisson.api.RLock;
 import org.redisson.api.RMapCache;
 import org.redisson.api.RedissonClient;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * redis分布式锁帮助类
