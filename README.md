@@ -32,6 +32,8 @@
 
 JDK1.8、Maven、Mysql、IntelliJ IDEA、SpringBoot1.5.10、zookeeper3.4.6、kafka_2.11、redis-2.8.4、curator-2.10.0
 
+win环境redis：https://gitee.com/52itstyle/spring-boot-seckill/tree/master/src/main/resources/redis
+
 ## 启动说明
 
 - 启动前 请配置 application.properties 中相关redis、zk以及kafka相关地址，建议在Linux下安装使用。
