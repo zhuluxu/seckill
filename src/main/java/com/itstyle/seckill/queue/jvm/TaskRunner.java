@@ -1,5 +1,7 @@
 package com.itstyle.seckill.queue.jvm;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -14,18 +16,27 @@ import com.itstyle.seckill.service.ISeckillService;
  */
 @Component
 public class TaskRunner implements ApplicationRunner{
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(TaskRunner.class);
 	
 	@Autowired
 	private ISeckillService seckillService;
 	
 	@Override
-    public void run(ApplicationArguments var) throws Exception{
-		while(true){
-			//进程内队列
-			SuccessKilled kill = SeckillQueue.getMailQueue().consume();
-			if(kill!=null){
-				seckillService.startSeckil(kill.getSeckillId(), kill.getUserId());
-			}
-		}
+    public void run(ApplicationArguments var){
+        new Thread(() -> {
+            LOGGER.info("提醒队列启动成功");
+            while(true){
+                try {
+                    //进程内队列
+                    SuccessKilled kill = SeckillQueue.getMailQueue().consume();
+                    if(kill!=null){
+                        seckillService.startSeckil(kill.getSeckillId(), kill.getUserId());
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
