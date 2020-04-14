@@ -12,16 +12,12 @@ import com.lmax.disruptor.dsl.Disruptor;
  */
 public class DisruptorUtil {
 	
-	static Disruptor<SeckillEvent> disruptor = null;
+	static Disruptor<SeckillEvent> disruptor;
 	static{
 		SeckillEventFactory factory = new SeckillEventFactory();
 		int ringBufferSize = 1024;
-		ThreadFactory threadFactory = new ThreadFactory() {
-			public Thread newThread(Runnable runnable) {
-				return new Thread(runnable);
-			}
-		};
-		disruptor = new Disruptor<SeckillEvent>(factory, ringBufferSize, threadFactory);
+		ThreadFactory threadFactory = runnable -> new Thread(runnable);
+		disruptor = new Disruptor<>(factory, ringBufferSize, threadFactory);
 		disruptor.handleEventsWith(new SeckillEventConsumer());
 		disruptor.start();
 	}

@@ -16,11 +16,7 @@ public class SeckillEventMain {
 	public static void producerWithTranslator(){
 		SeckillEventFactory factory = new SeckillEventFactory();
 		int ringBufferSize = 1024;
-		ThreadFactory threadFactory = new ThreadFactory() {
-			public Thread newThread(Runnable runnable) {
-				return new Thread(runnable);
-			}
-		};
+		ThreadFactory threadFactory = runnable -> new Thread(runnable);
 		//创建disruptor
 		Disruptor<SeckillEvent> disruptor = new Disruptor<SeckillEvent>(factory, ringBufferSize, threadFactory);
 		//连接消费事件方法

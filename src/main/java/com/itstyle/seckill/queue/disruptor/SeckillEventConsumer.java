@@ -12,7 +12,8 @@ public class SeckillEventConsumer implements EventHandler<SeckillEvent> {
 	
 	private ISeckillService seckillService = (ISeckillService) SpringUtil.getBean("seckillService");
 	
-	public void onEvent(SeckillEvent seckillEvent, long seq, boolean bool) throws Exception {
+	@Override
+    public void onEvent(SeckillEvent seckillEvent, long seq, boolean bool) {
 		seckillService.startSeckil(seckillEvent.getSeckillId(), seckillEvent.getUserId());
 	}
 }

@@ -8,7 +8,8 @@ import com.lmax.disruptor.EventFactory;
  */
 public class SeckillEventFactory implements EventFactory<SeckillEvent> {
 
-	public SeckillEvent newInstance() {
+	@Override
+    public SeckillEvent newInstance() {
 		return new SeckillEvent();
 	}
 }
