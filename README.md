@@ -4,6 +4,16 @@
 
 运行前一定要看文档说明：https://gitee.com/52itstyle/spring-boot-seckill/wikis
 
+## 抢红包案例
+
+[微信高并发抢红包秒杀实战案例](https://blog.52itstyle.vip/archives/5103/)
+
+[微信抢红包过期失效实战案例](https://blog.52itstyle.vip/archives/5135/)
+
+[推荐一款高效的处理延迟任务神器](https://blog.52itstyle.vip/archives/5150/)
+
+[推荐一款基于Redis的高可用延迟队列](https://blog.52itstyle.vip/archives/5163/)
+
 ## 推荐
 
 小黄图床：https://www.cloudbed.vip
@@ -397,3 +407,9 @@ SpringBoot开发案例从0到1构建分布式秒杀系统，项目案例基本�
 ## 云服务推荐
 
 [![输入图片说明](https://images.gitee.com/uploads/images/2019/0718/130816_45e06f95_87650.png "屏幕截图.png")](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=kutpfdo3)
+
+## 小程序推荐
+
+这可能是东半球最好的妹子图小程序，点她、点她、点她！！！
+
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0224/192652_8e043ef1_87650.jpeg "meizi.jpg")
