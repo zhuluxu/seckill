@@ -4,6 +4,8 @@
 
 运行前一定要看文档说明：https://gitee.com/52itstyle/spring-boot-seckill/wikis
 
+ **墙裂推荐，一个能够让程序猿快速开发的极简工具箱：https://gitee.com/52itstyle/spring-boot-tools** 
+
 ## 抢红包案例
 
 [微信高并发抢红包秒杀实战案例](https://blog.52itstyle.vip/archives/5103/)
