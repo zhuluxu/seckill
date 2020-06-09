@@ -1,5 +1,6 @@
 # 分布式秒杀系统
 
+
 交流群：529135840
 
 运行前一定要看文档说明：https://gitee.com/52itstyle/spring-boot-seckill/wikis
@@ -47,6 +48,12 @@ win环境redis：https://gitee.com/52itstyle/spring-boot-seckill/tree/master/src
 - 秒杀商品页：[http://localhost:8080/seckill/index.shtml](http://localhost:8080/seckill/index.shtml) ，部分功能待完成。
 
 - 本测试案例单纯为了学习，某些案例并不适用于生产环境，大家根据所需自行调整。
+
+
+
+## 云服务推荐
+
+[![输入图片说明](https://images.gitee.com/uploads/images/2020/0609/222359_e44f1a3f_87650.jpeg "屏幕截图.png")](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=kutpfdo3)
 
 ## 测试入口
 
@@ -407,10 +414,6 @@ SpringBoot开发案例从0到1构建分布式秒杀系统，项目案例基本�
 
 演示地址：https://speech.52itstyle.vip
 
-
-## 云服务推荐
-
-[![输入图片说明](https://images.gitee.com/uploads/images/2020/0609/222359_e44f1a3f_87650.jpeg "屏幕截图.png")](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=kutpfdo3)
 
 ## 小程序推荐
 
