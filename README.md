@@ -410,7 +410,7 @@ SpringBoot开发案例从0到1构建分布式秒杀系统，项目案例基本�
 
 ## 云服务推荐
 
-[![输入图片说明](https://images.gitee.com/uploads/images/2019/0718/130816_45e06f95_87650.png "屏幕截图.png")](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=kutpfdo3)
+[![输入图片说明](https://images.gitee.com/uploads/images/2020/0609/222359_e44f1a3f_87650.jpeg "屏幕截图.png")](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=kutpfdo3)
 
 ## 小程序推荐
 
