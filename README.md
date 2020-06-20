@@ -3,9 +3,9 @@
 
 交流群：529135840
 
-运行前一定要看文档说明：https://gitee.com/52itstyle/spring-boot-seckill/wikis
+小伙伴们运行前一定要看文档说明：https://gitee.com/52itstyle/spring-boot-seckill/wikis
 
- **墙裂推荐，一个能够让程序猿快速开发的极简工具箱：https://gitee.com/52itstyle/spring-boot-tools** 
+ **墙裂推荐，一个能够让程序猿快速开发的极简工具箱：https://gitee.com/52itstyle/SPTools** 
 
 ## 抢红包案例
 
@@ -19,7 +19,11 @@
 
 ## 推荐
 
-小黄图床：https://www.cloudbed.vip
+小黄图床：https://tools.cloudbed.vip
+
+妹子图小程序：https://gitee.com/52itstyle/mzitu
+
+快速开发：https://gitee.com/52itstyle/SPTools
 
 支付服务：https://gitee.com/52itstyle/spring-boot-pay
 
@@ -30,6 +34,7 @@
 搜索服务：https://gitee.com/52itstyle/spring-boot-elasticsearch
 
 私人网盘：https://gitee.com/52itstyle/spring-boot-CloudDisk
+
 
 ## 开发环境
 
